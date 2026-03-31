@@ -37,8 +37,7 @@ try {
     echo json_encode([
         'error' => $e->getMessage(),
     ]);
-} catch (\Exception $e) {
-    throw $e;
+} catch (\Throwable $e) {
     echo json_encode([
         'error' => 'Internal Server Error',
     ]);
