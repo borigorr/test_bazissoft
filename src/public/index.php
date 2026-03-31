@@ -38,6 +38,8 @@ try {
         'error' => $e->getMessage(),
     ]);
 } catch (\Throwable $e) {
+    http_response_code(500);
+    file_put_contents(__DIR__ . '/../logs/app.log', $e, FILE_APPEND | LOCK_EX );
     echo json_encode([
         'error' => 'Internal Server Error',
     ]);

@@ -7,6 +7,7 @@ use App\Contracts\Services\TableServiceContract;
 use App\Dto\Repositories\TableDto;
 use App\Dto\Services\FindTableDto;
 use App\Exceptions\ValidateException;
+use App\Dto\Repositories\FindTableDto as FindTableRepositoryDto;
 
 class TableService implements TableServiceContract
 {
@@ -25,7 +26,13 @@ class TableService implements TableServiceContract
         $this->validateFind($data);
         $startDateTime = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $data->date  . " " . $data->startTime);
         $endDateTime = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $data->date  . " " . $data->endTime);
-        return $this->repository->find($startDateTime, $endDateTime, $data->guestsCount);
+        $findData = new FindTableRepositoryDto(
+            startDate: $startDateTime,
+            endDate: $endDateTime,
+            guestsCount: $data->guestsCount,
+
+        );
+        return $this->repository->find($findData);
     }
 
     /**
