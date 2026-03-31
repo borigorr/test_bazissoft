@@ -1,0 +1,27 @@
+ 
+version: '3.8'
+services:
+  php:
+    container_name: php
+    build: 
+      context: docker/php
+    volumes:
+     - ./src:/opt/app
+
+  db:
+    image: mysql:9.6.0
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_task
+
+  nginx:
+    image: nginx:1.29.7
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./src:/opt/app

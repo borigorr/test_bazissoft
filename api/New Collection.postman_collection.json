@@ -1,0 +1,55 @@
+{
+  "info": {
+    "_postman_id": "94f1323c-4ab2-42d8-b6bb-726bce0bea53",
+    "name": "New Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12551226"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tables/available?date=2020-01-02&start_time=00:05:00&end_time=01:20:00&guests_count=25",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "tables",
+            "available"
+          ],
+          "query": [
+            {
+              "key": "date",
+              "value": "2020-01-02",
+              "description": "Дата",
+              "type": "text"
+            },
+            {
+              "key": "start_time",
+              "value": "00:05:00",
+              "description": "Время начала",
+              "type": "text"
+            },
+            {
+              "key": "end_time",
+              "value": "01:20:00",
+              "description": "Время окончания",
+              "type": "text"
+            },
+            {
+              "key": "guests_count",
+              "value": "25",
+              "description": "Кол-во мест",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
