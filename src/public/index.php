@@ -15,7 +15,7 @@ use \App\Exceptions\ValidateException;
 
 $method  = $_SERVER['REQUEST_METHOD'];
 $uri     = $_SERVER['REQUEST_URI'];
-$path = explode("?", $uri)[0];
+$path =  parse_url($uri, PHP_URL_PATH);
 header('Content-Type: application/json; charset=utf-8');
 try {
     $action = Router::math(MethodsEnum::from($method), $path);

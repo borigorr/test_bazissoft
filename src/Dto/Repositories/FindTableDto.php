@@ -9,5 +9,6 @@ readonly class FindTableDto
         public \DateTimeImmutable $endDate,
         public ?int $guestsCount = null,
         public ?int $tableId = null,
+        public ?int $excludeBookingId = null,
     ){}
 }

@@ -7,7 +7,7 @@
   },
   "item": [
     {
-      "name": "New Request",
+      "name": "get tables",
       "request": {
         "method": "GET",
         "header": [],
@@ -48,13 +48,13 @@
       "response": []
     },
     {
-      "name": "New Request",
+      "name": "create booking",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"table_id\": 1,\n    \"guest_name\": \"guest_name\",\n    \"guest_phone\": \"12313\",\n    \"booking_date\": \"2020-01-01\",\n    \"start_time\": \"01:00:00\",\n    \"end_time\": \"02:00:00\",\n    \"guests_count\": 1\n}",
+          "raw": "{\n    \"table_id\": 1,\n    \"guest_name\": \"guest_name\",\n    \"guest_phone\": \"12313\",\n    \"booking_date\": \"2020-01-01\",\n    \"start_time\": \"03:00:00\",\n    \"end_time\": \"04:01:00\",\n    \"guests_count\": 1\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -69,6 +69,58 @@
           "path": [
             "api",
             "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get bookings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/bookings?page=2&date=2020-01-01&status=confirmed",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "bookings"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "2"
+            },
+            {
+              "key": "date",
+              "value": "2020-01-01"
+            },
+            {
+              "key": "status",
+              "value": "confirmed",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update booking",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/bookings/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "bookings",
+            ""
           ]
         }
       },

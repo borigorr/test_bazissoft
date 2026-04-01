@@ -47,6 +47,10 @@ class TableRepositoryDb implements TableRepository
             $whereData[':table_id'] = $data->tableId;
             $where .= " AND id = :table_id";
         }
+        if ($data->excludeBookingId !== null) {
+            $whereData[':exclude_id'] = $data->excludeBookingId;
+            $whereBookings .= " AND id != :exclude_id";
+        }
         $sql = "
             with tables_lock as (
                 SELECT table_id FROM `bookings`

@@ -24,11 +24,17 @@ class Router {
     public static function math(MethodsEnum $method, string $path): RouteMatchDto
     {
 
-        if (array_key_exists($method->value, self::$routes) && array_key_exists($path, self::$routes[$method->value])) {
-            return new RouteMatchDto(
-                controller: self::$routes[$method->value][$path]['controller'],
-                action: self::$routes[$method->value][$path]['action'],
-            );
+        if (array_key_exists($method->value, self::$routes) /*&& array_key_exists($path, self::$routes[$method->value])*/) {
+            foreach (self::$routes[$method->value] as $key => $route) {
+
+                if (preg_match($key, $path)) {
+                    return new RouteMatchDto(
+                        controller: $route['controller'],
+                        action: $route['action'],
+                    );
+                }
+            }
+
         }
         throw new NotFoundException($path);
     }

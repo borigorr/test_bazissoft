@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Dto\Repositories;
-class TableDto {
+readonly class TableDto {
     public function __construct(
         public int $id,
         public int $tableNumber,
@@ -9,6 +9,5 @@ class TableDto {
         public bool $isActive,
     )
     {
-
     }
 }
