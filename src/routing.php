@@ -33,3 +33,10 @@ Router::setRoutes(new PathDto(
     action: 'update',
     method: MethodsEnum::PUT
 ));
+
+Router::setRoutes(new PathDto(
+    path: '!^/api/bookings/[0-9]+$!',
+    controller: BookingController::class,
+    action: 'delete',
+    method: MethodsEnum::DELETE
+));

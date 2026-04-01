@@ -170,4 +170,13 @@ class BookingService implements BookingServiceContract
         );
         return $this->bookingRepository->update($id, $updateData);
     }
+
+    public function delete(int $id): void
+    {
+        $booking = $this->bookingRepository->getBookingById($id);
+        if (empty($booking)) {
+            throw new ValidateException("booking is missing");
+        }
+        $this->bookingRepository->delete($id);
+    }
 }

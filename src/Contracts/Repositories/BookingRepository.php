@@ -17,4 +17,6 @@ interface BookingRepository
     public function getBookingById(int $id): ?BookingDto;
 
     public function update(int $id, BookingUpdateDto $data): BookingDto;
+
+    public function delete(int $id): void;
 }

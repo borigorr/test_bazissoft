@@ -15,4 +15,6 @@ interface BookingServiceContract
     public function list(ServicesBookingFilterListDto $data): BookingListDto;
 
     public function update(int $id, ServiceBookingUpdateDto $data): BookingDto;
+
+    public function delete(int $id): void;
 }

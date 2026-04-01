@@ -96,6 +96,15 @@ class BookingRepositoryDb implements BookingRepository
         return null;
     }
 
+    public function delete(int $id): void
+    {
+        $sql = "UPDATE bookings SET status = 'canceled' WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+        ]);
+    }
+
     private function arrayToDto(array $data): BookingDto
     {
         return new BookingDto(

@@ -93,6 +93,17 @@ class BookingController
         );
     }
 
+    public function delete(): HttpResponseDto
+    {
+        $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $parsePath = explode( "/", $path );
+        $id = (int) end($parsePath);
+        $this->bookingService->delete($id);
+        return new HttpResponseDto(
+            statusCode: 204,
+        );
+    }
+
     private function dtoToArray(BookingDto $data): array
     {
         return [
